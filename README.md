@@ -3,7 +3,7 @@ Navigate to target folder in CMD.
 
 ## Clone repository
 ```
-gh repo clone shihaab/SogetiInn
+git clone https://github.com/shihaab/SogetiInn.git
 ```
 
 ## Install dependencies
