@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SogetiInn API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        code {
+            font-size: 15px;
+            font-weight: bold;
+            background-color: black;
+            padding: 5px 10px;
+            border-radius: 10px;
+            color: navajowhite;
+        }
+        code span:nth-child(odd) {
+            color: rgb(114, 114, 255);
+        }
+
+        code span:nth-child(even) {
+            color: rgb(128, 255, 128);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <span style="padding: 2px 4px;background-color: green;color: white;border: 2px solid darkgreen;border-radius: 5px;font-size: 11px;font-family: inherit;">API service is up and running!</span>
+    <h1>SogetiInn API Documentation</h1>
+    <h2>Building an API call</h2>
+    <p>
+        <code>
+            http://127.0.0.1:5000/
+            <span title="the function">bookings</span>
+            <span title="start of a querystring">?</span>
+            <span title="parameter 1">room_id</span>
+            <span title="point to value">=</span>
+            <span title="value of parameter 1">1</span>
+            <span title="indicate that a second value">&</span>
+            <span title="parameter 2">client_id</span>
+            <span title="point to value">=</span>
+            <span title="value of parameter 2">9</span>
+        </code>
+    </p>
+    
+
+    <h2>/bookings</h2>
+    <p>Get a list of bookings based on various parameters.</p>
+    <ul>
+        <li><strong>room_id</strong>: Room ID (optional)</li>
+        <li><strong>client_id</strong>: Client ID (optional)</li>
+        <li><strong>coupon_used</strong>: Coupon Used (optional)</li>
+        <li><strong>start_date_time</strong>: Start Date and Time (optional)</li>
+        <li><strong>end_date_time</strong>: End Date and Time (optional)</li>
+    </ul>
+
+    <h2>/cleaning_employees</h2>
+    <p>Get a list of cleaning employees based on various parameters.</p>
+    <ul>
+        <li><strong>employee_number</strong>: Employee Number (optional)</li>
+        <li><strong>first_name</strong>: First Name (optional)</li>
+        <li><strong>last_name</strong>: Last Name (optional)</li>
+        <li><strong>dob</strong>: Date of Birth (optional)</li>
+        <li><strong>phone_number</strong>: Phone Number (optional)</li>
+    </ul>
+
+    <h2>/clients</h2>
+    <p>Get a list of clients based on various parameters.</p>
+    <ul>
+        <li><strong>first_name</strong>: First Name (optional)</li>
+        <li><strong>last_name</strong>: Last Name (optional)</li>
+        <li><strong>dob</strong>: Date of Birth (optional)</li>
+        <li><strong>phone_number</strong>: Phone Number (optional)</li>
+        <li><strong>iban</strong>: IBAN (optional)</li>
+    </ul>
+
+    <h2>/complaints</h2>
+    <p>Get a list of complaints based on various parameters.</p>
+    <ul>
+        <li><strong>booking_id</strong>: Booking ID (optional)</li>
+        <li><strong>description</strong>: Complaint Description (optional)</li>
+    </ul>
+
+    <h2>/receipts</h2>
+    <p>Get a list of receipts based on various parameters.</p>
+    <ul>
+        <li><strong>tab_id</strong>: Tab ID (optional)</li>
+        <li><strong>amount</strong>: Receipt Amount (optional)</li>
+        <li><strong>currency</strong>: Currency (optional)</li>
+    </ul>
+
+    <h2>/rooms</h2>
+    <p>Get a list of rooms based on various parameters.</p>
+    <ul>
+        <li><strong>number_on_floor</strong>: Number on Floor (optional)</li>
+        <li><strong>floor</strong>: Floor (optional)</li>
+        <li><strong>occupied</strong>: Occupied (optional)</li>
+        <li><strong>last_cleaned</strong>: Last Cleaned (optional)</li>
+        <li><strong>last_cleaned_employee_id</strong>: Last Cleaned Employee ID (optional)</li>
+        <li><strong>amenities</strong>: Amenities (optional)</li>
+    </ul>
+
+    <h2>/tabs</h2>
+    <p>Get a list of tabs based on various parameters.</p>
+    <ul>
+        <li><strong>booking_id</strong>: Booking ID (optional)</li>
+        <li><strong>status</strong>: Tab Status (optional)</li>
+    </ul>
+
+    <h2>/open-tabs</h2>
+    <p>Get a list of open tabs for a specific booking.</p>
+    <ul>
+        <li><strong>booking_id</strong>: Booking ID (required)</li>
+    </ul>
+
+    <h2>/available-rooms</h2>
+    <p>Check the availability of rooms based on the booking information.</p>
+    <ul>
+        <li><strong>date</strong>: Date in YYYY-MM-DD format (required)</li>
+    </ul>
+
+    <h2>/reset-db</h2>
+    <p>Reset and populate the database.</p>
+
+    <h2>/checkout-service</h2>
+    <p>Get the total amount of the booking.</p>
+    <ul>
+        <li><strong>booking_id</strong>: Booking ID (required)</li>
+    </ul>
+
+    <h2>/create-booking</h2>
+    <p>Create a new booking.</p>
+    <ul>
+        <li><strong>room_id</strong>: Room ID (required)</li>
+        <li><strong>client_id</strong>: Client ID (required)</li>
+        <li><strong>start_date_time</strong>: Start Date and Time (required)</li>
+        <li><strong>end_date_time</strong>: End Date and Time (required)</li>
+        <li><strong>coupons_used</strong>: Coupons Used (optional)</li>
+    </ul>
+
+    <h2>/create-client</h2>
+    <p>Create a new client.</p>
+    <ul>
+        <li><strong>first_name</strong>: First Name (required)</li>
+        <li><strong>last_name</strong>: Last Name (required)</li>
+        <li><strong>dob</strong>: Date of Birth (required)</li>
+        <li><strong>phone_number</strong>: Phone Number (required)</li>
+        <li><strong>iban</strong>: IBAN (required)</li>
+    </ul>
+
+    <h2>/create-tab</h2>
+    <p>Create a new tab.</p>
+    <ul>
+        <li><strong>booking_id</strong>: Booking ID (required)</li>
+        <li><strong>status</strong>: Tab Status (required)</li>
+    </ul>
+
+    <h2>/create-receipt</h2>
+    <p>Create a new receipt.</p>
+    <ul>
+        <li><strong>tab_id</strong>: Tab ID (required)</li>
+        <li><strong>amount</strong>: Receipt Amount (required)</li>
+        <li><strong>currency</strong>: Currency (required)</li>
+    </ul>
+
+    <h2>/remove-booking</h2>
+    <p>Remove a booking.</p>
+    <ul>
+        <li><strong>id</strong>: Booking ID (required)</li>
+    </ul>
+
+    <h2>/remove-client</h2>
+    <p>Remove a client.</p>
+    <ul>
+        <li><strong>id</strong>: Client ID (required)</li>
+    </ul>
+
+    <h2>/remove-receipt</h2>
+    <p>Remove a receipt.</p>
+    <ul>
+        <li><strong>id</strong>: Receipt ID (required)</li>
+    </ul>
+
+    <h2>/update-booking</h2>
+    <p>Update a booking.</p>
+    <ul>
+        <li><strong>room_id</strong>: ID (rece)</li>
+        <li><strong>room_id</strong>: Room ID (optional)</li>
+        <li><strong>client_id</strong>: Client ID (optional)</li>
+        <li><strong>coupon_used</strong>: Coupon Used (optional)</li>
+        <li><strong>start_date_time</strong>: Start Date and Time (optional)</li>
+        <li><strong>end_date_time</strong>: End Date and Time (optional)</li>
+    </ul>
+    <h2>/update-receipt</h2>
+    <p>Update a receipts.</p>
+    <ul>
+        <li><strong>tab_id</strong>: Tab ID (optional)</li>
+        <li><strong>amount</strong>: Receipt Amount (optional)</li>
+        <li><strong>currency</strong>: Currency (optional)</li>
+    </ul>
+
+    <h2>/update-room</h2>
+    <p>Update a room.</p>
+    <ul>
+        <li><strong>number_on_floor</strong>: Number on Floor (optional)</li>
+        <li><strong>floor</strong>: Floor (optional)</li>
+        <li><strong>occupied</strong>: Occupied (optional)</li>
+        <li><strong>last_cleaned</strong>: Last Cleaned (optional)</li>
+        <li><strong>last_cleaned_employee_id</strong>: Last Cleaned Employee ID (optional)</li>
+        <li><strong>amenities</strong>: Amenities (optional)</li>
+    </ul>
+
+
+
+
+
+    <h2>Database Layout</h2>
+    <h3>Table: rooms</h3>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>number_on_floor</th>
+            <th>floor</th>
+            <th>occupied</th>
+            <th>last_cleaned</th>
+            <th>last_cleaned_employee_id</th>
+            <th>amenities</th>
+        </tr>
+    </table>
+
+    <h3>Table: cleaning_employees</h3>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>employee_number</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>dob</th>
+            <th>phone_number</th>
+        </tr>
+    </table>
+
+    <h3>Table: bookings</h3>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>room_id</th>
+            <th>client_id</th>
+            <th>coupon_used</th>
+            <th>start_date_time</th>
+            <th>end_date_time</th>
+        </tr>
+    </table>
+
+    <h3>Table: clients</h3>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>dob</th>
+            <th>phone_number</th>
+            <th>iban</th>
+        </tr>
+    </table>
+
+    <h3>Table: complaints</h3>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>booking_id</th>
+            <th>description</th>
+        </tr>
+    </table>
+
+    <h3>Table: tabs</h3>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>booking_id</th>
+            <th>status</th>
+        </tr>
+    </table>
+
+    <h3>Table: receipts</h3>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>tab_id</th>
+            <th>amount</th>
+            <th>currency</th>
+        </tr>
+    </table>
+
+</body>
+</html>
