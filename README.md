@@ -1,12 +1,12 @@
 # To use SogetiInn API
 Navigate to target folder in CMD.
 
-Clone repository
+## Clone repository
 ```
 gh repo clone shihaab/SogetiInn
 ```
 
-# Install dependencies
+## Install dependencies
 ```
 pip install Flask
 ```
