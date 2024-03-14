@@ -1,5 +1,6 @@
 # To use SogetiInn API
-Navigate to target folder in CMD
+Navigate to target folder in CMD.
+
 Clone repository
 ```
 gh repo clone shihaab/SogetiInn
