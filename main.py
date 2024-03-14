@@ -331,8 +331,6 @@ def available_rooms():
     if request.method == 'GET': 
         date = request.args['date']
         available_rooms_ids = cursor.execute("SELECT room_id FROM bookings WHERE '"+date+"' NOT BETWEEN start_date_time AND end_date_time").fetchall()
-        # for room_id in available_rooms_ids:
-        #     available_rooms = cursor.execute("SELECT * FROM rooms WHERE id = "+ room_id).fetchall()
         cursor.close()
         jsonArr = []
         for iteration in available_rooms_ids:
