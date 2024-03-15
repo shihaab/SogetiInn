@@ -5,7 +5,7 @@ Navigate to target folder in CMD.
 If you have git installed, you can do use this;
 
 ```
-git clone https://github.com/shihaab/SogetiInn.git
+git clone https://github.com/shihaab/SogetiInn.git && cd SogetiInn
 ```
 Otherwise, download the code as ZIP and extract it. Navigate into the folder via CMD.
 
