@@ -1,3 +1,4 @@
+import datetime
 import decimal
 from flask import Flask, render_template, request
 from faker import Faker
@@ -56,7 +57,15 @@ def populate():
 
     # bookings
     for iteration in range(10):
-        cursor.execute("INSERT INTO bookings VALUES ('"+str(iteration)+"', '"+random_number(0,19)+"', '"+random_number(0,29)+"', '"+random_coupon()+"', '"+str(fake.date_this_month())+"', '"+str(fake.date_this_year())+"')")
+        start_date = fake.date_between_dates(
+            date_start=datetime.date.today() - datetime.timedelta(days=20),  # Start date should not be more than 20 days ago
+            date_end=datetime.date.today() - datetime.timedelta(days=1)      # End date should be yesterday or earlier
+        )
+        end_date = fake.date_between_dates(
+            date_start=start_date + datetime.timedelta(days=1),             # End date should be after the start date
+            date_end=start_date + datetime.timedelta(days=21)               # End date should be within 3 weeks
+        )
+        cursor.execute("INSERT INTO bookings VALUES ('"+str(iteration)+"', '"+random_number(0,19)+"', '"+random_number(0,29)+"', '"+random_coupon()+"', '"+str(start_date)+"', '"+str(end_date)+"')")
 
     # clients
     for iteration in range(30):
